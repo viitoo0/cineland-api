@@ -50,7 +50,7 @@ export class TvShowService implements ITVShowService{
             }
         })
         tvShowData.videos = tvShowData.videos.results.filter((result: {iso_3166_1: string;}) => {return hasBR == true ? result.iso_3166_1 == "BR" : result.iso_3166_1 == "US"});
-        // console.log(tvShowData)
+
         const tvShow:TVShowDetailsDTO = {
             id: tvShowData.id,
             title: tvShowData.name,
@@ -68,7 +68,6 @@ export class TvShowService implements ITVShowService{
             certifications: tvShowData.content_ratings,
             credits: tvShowData.aggregate_credits
         }
-        console.log(tvShow)
         return tvShow
     }
 }

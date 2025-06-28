@@ -48,7 +48,7 @@ export class MovieService implements IMovieService{
             }
         })
         movieData.videos = movieData.videos.results.filter((result: {iso_3166_1: string;}) => {return hasBR == true ? result.iso_3166_1 == "BR" : result.iso_3166_1 == "US"});
-        // console.log(movieData)
+
         const movie:MovieDetailsDTO = {
             id: movieData.id,
             backdropPath: imageUrl + movieData.backdrop_path,
