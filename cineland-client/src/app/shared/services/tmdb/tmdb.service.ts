@@ -14,6 +14,16 @@ export class TmdbService {
 
   constructor( private _http: HttpClient ) { }
 
+  public getMediaDataAsync(id:string, type:string): Observable<any>{
+    const httpOptions = {
+      headers:{
+        'Content-Type': 'application/json',
+      }
+    };
+    const url = `${this.baseUrl}/${type}/${id}`;
+    return this._http.get(url, httpOptions);
+  }
+
   public getWeeklyTrendingMovies(): Observable<any> {
     const httpOptions = {
       headers: {

@@ -10,7 +10,21 @@ export class MovieController implements IControllerBase{
     public registerRoutes(): Router {
         const router = Router();
         router.get("/trending/movie/week", (req, res) => this.getTrendingMovies(req, res));
+        router.get("/movie/:id", (req, res) => this.getSpecificMovieData(req,res));
         return router;    
+    }
+    
+    private async getSpecificMovieData(req: Request, res: Response){
+        const id = Number(req.params.id);
+        if(Number.isNaN(id))
+            return ;
+
+        try{
+            const movie = await this._movieService.getSpecificMovieData(id)
+            res.send(movie)
+        } catch {
+            res.status(500).send('Internal Server Error')
+        }
     }
 
     private async getTrendingMovies(req: Request, res: Response) {
@@ -21,4 +35,5 @@ export class MovieController implements IControllerBase{
             res.status(500).send('Internal Server Error');
         }
     }
+
 }
