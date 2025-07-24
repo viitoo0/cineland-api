@@ -24,7 +24,7 @@ export class TVMovieBaseDetails{
     private filterTrailer(videos: any) {
         let hasBR = videos.results.some((x:any) => x.iso_3166_1 == "BR" && x.type == "Trailer");
         let trailers = videos.results.sort((x: {published_at: Date}, y: {published_at: Date}) => new Date (x.published_at).getTime()-new Date(y.published_at).getTime()).filter((result: { type: string; iso_3166_1: string; }) => result.type == "Trailer" && (hasBR ? result.iso_3166_1 == "BR" : result.iso_3166_1 == "US" || result.iso_3166_1 == "CN"))
-        return this.youtubeUrl + trailers[0].key;
+        return trailers.length > 0 ? this.youtubeUrl + trailers[0].key : "Not Available";
     }
 }
 
