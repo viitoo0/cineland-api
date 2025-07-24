@@ -9,7 +9,6 @@ export interface Movie {
     runtime: number,
     type: string,
     production_countries: string[],
-    status: string,
     videos: any,
     release_dates: any,
     credits: any

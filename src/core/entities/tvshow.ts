@@ -10,7 +10,6 @@ export interface TvShow {
     status: string,
     seasons: string[],
     production_countries: string[],
-    spoken_languages: string[],
     videos: any,
     content_ratings: any,
     aggregate_credits: any
